@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const quotes = [
   "Logic will get you from A to B. Imagination will take you everywhere.",
   "There are 10 kinds of people. Those who know binary and those who don't.",
@@ -14,7 +14,6 @@ app.use(express.static("./public"));
 
 app.get("/", (req, res) => {
   const quote = quotes[Math.floor(Math.random() * 5)];
-
   res.render("index", { quote: quote });
 });
 
